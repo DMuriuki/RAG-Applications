@@ -4,6 +4,7 @@ from PIL import Image
 import io
 import base64
 import re
+import os
 
 # Page configuration setup
 st.set_page_config(
@@ -36,10 +37,17 @@ st.set_page_config(
 
 )
 
-# Title and description in main area
-st.markdown("""
-    # <img src="data:image/png;base64,{}" width="50" style="vertical-align: -12px;"> Gemma-3 OCR
-""".format(base64.b64encode(open("./assets/gemma3.png", "rb").read()).decode()), unsafe_allow_html=True)
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+image_path = os.path.join(BASE_DIR, "assets", "gemma3.png")
+
+with open(image_path, "rb") as img_file:
+    img_data = base64.b64encode(img_file.read()).decode()
+
+st.markdown(f"""
+    # <img src="data:image/png;base64,{img_data}" width="100" style="vertical-align: -12px;"> Gemma-3 OCR
+""", unsafe_allow_html=True)
+
+st.markdown("---")
 
 # Descriptive text below title
 st.markdown("""
