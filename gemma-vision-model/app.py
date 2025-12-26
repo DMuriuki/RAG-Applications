@@ -130,7 +130,7 @@ with st.sidebar:
             with st.spinner("Processing image..."):
                 try:
                     response = ollama.chat(
-                        model='gemma3:12b',
+                        model = "llava",
                         messages=[{
                             'role': 'user',
                             'content': """Analyze the text in the provided image. Extract all readable content
@@ -153,7 +153,7 @@ if 'ocr_result' in st.session_state:
     st.markdown("### Here's the extracted content from the image, presented in a structured Markdown format:")
     styled_md = f"""
     <div style="
-        background-color: #e6d7d5;
+        background-color: #520f06;
         border-left: 5px solid #ff4d4d;
         padding: 1em;
         border-radius: 6px;
